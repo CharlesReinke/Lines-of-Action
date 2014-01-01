@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Lines of Action</title>
+</head>
+<body>
+<p>
+This is an example page that shows how to use loa.js with a canvas element.
+</p>
+<canvas style='outline: none; float: left;' tabindex='0' id='game' width='640' height='640'></canvas>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src='loa.js' type='text/javascript'></script>
+
+<script type='text/javascript'>
+$(document).ready(function() {
+	var gameObj = new loa();
+	gameObj.canvas = document.getElementById('game');
+	gameObj.context = gameObj.canvas.getContext('2d');
+	gameObj.draw();
+	
+	$('#game').click(function(event) {
+		var offsetX = $(this).offset().left;
+		var offsetY = $(this).offset().top;
+		var mouseX = event.pageX - offsetX;
+		var mouseY = event.pageY - offsetY;
+		gameObj.handleClick(mouseX, mouseY);	
+	});
+});
+</script>
+</body>
+</html>
